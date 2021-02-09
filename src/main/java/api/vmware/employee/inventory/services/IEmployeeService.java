@@ -20,37 +20,40 @@ public interface IEmployeeService {
     void persistEmployeeDetails(MultipartFile file, Integer taskID) throws EmployeeInventoryException;
 
     /**
-     * Create employee dto.
+     * Create employee employee dto.
      *
      * @param employeeDTO the employee dto
      * @return the employee dto
+     * @throws EmployeeInventoryException the employee inventory exception
      */
-    EmployeeDTO create(EmployeeDTO employeeDTO) throws EmployeeInventoryException;
+    EmployeeDTO createEmployee(EmployeeDTO employeeDTO) throws EmployeeInventoryException;
 
     /**
-     * Update employee dto.
+     * Update employee employee dto.
      *
      * @param employeeDTO the employee dto
      * @param employeeId  the employee id
      * @return the employee dto
+     * @throws EmployeeInventoryException the employee inventory exception
      */
-    EmployeeDTO update(EmployeeDTO employeeDTO,
-                       final Integer employeeId) throws EmployeeInventoryException;
+    EmployeeDTO updateEmployee(EmployeeDTO employeeDTO,
+                               final Integer employeeId) throws EmployeeInventoryException;
 
     /**
-     * Delete.
+     * Delete employee.
      *
      * @param id the id
+     * @throws EmployeeInventoryException the employee inventory exception
      */
-    void delete(Integer id) throws EmployeeInventoryException;
+    void deleteEmployee(Integer id) throws EmployeeInventoryException;
 
     /**
-     * Find employee dto.
+     * Find employee by id employee dto.
      *
      * @param id the id
      * @return the employee dto
      */
-    EmployeeDTO find(Integer id);
+    EmployeeDTO findEmployeeById(Integer id);
 
     /**
      * Find all list.

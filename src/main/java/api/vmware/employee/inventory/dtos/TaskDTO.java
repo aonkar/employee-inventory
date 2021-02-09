@@ -1,5 +1,6 @@
 package api.vmware.employee.inventory.dtos;
 
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
@@ -17,6 +18,7 @@ import java.io.Serializable;
 @Getter
 @NoArgsConstructor
 @ToString
+@EqualsAndHashCode
 @Entity
 @Table(name = "task")
 public class TaskDTO implements Serializable {

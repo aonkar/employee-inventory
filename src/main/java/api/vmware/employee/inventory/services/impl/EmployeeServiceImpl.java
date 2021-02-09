@@ -92,7 +92,7 @@ public class EmployeeServiceImpl implements IEmployeeService {
     }
 
     @Override
-    public EmployeeDTO create(final EmployeeDTO employeeDTO) throws EmployeeInventoryException {
+    public EmployeeDTO createEmployee(final EmployeeDTO employeeDTO) throws EmployeeInventoryException {
         try {
             return employeeRepository.save(employeeDTO);
         } catch (final Exception exception) {
@@ -102,8 +102,8 @@ public class EmployeeServiceImpl implements IEmployeeService {
     }
 
     @Override
-    public EmployeeDTO update(final EmployeeDTO employeeDTO,
-                              final Integer employeeId) throws EmployeeInventoryException {
+    public EmployeeDTO updateEmployee(final EmployeeDTO employeeDTO,
+                                      final Integer employeeId) throws EmployeeInventoryException {
         final Optional<EmployeeDTO> optionalEmployee = employeeRepository.findById(Long.valueOf(employeeId));
         if (optionalEmployee.isPresent()) {
             final EmployeeDTO updatedEmployeeDTO = optionalEmployee.get();
@@ -119,7 +119,7 @@ public class EmployeeServiceImpl implements IEmployeeService {
     }
 
     @Override
-    public void delete(final Integer id) throws EmployeeInventoryException {
+    public void deleteEmployee(final Integer id) throws EmployeeInventoryException {
         try {
             employeeRepository.deleteById(Long.valueOf(id));
         } catch (final Exception exception){
@@ -129,7 +129,7 @@ public class EmployeeServiceImpl implements IEmployeeService {
     }
 
     @Override
-    public EmployeeDTO find(final Integer id) {
+    public EmployeeDTO findEmployeeById(final Integer id) {
         final Optional<EmployeeDTO> optionalEmployee = employeeRepository.findById(Long.valueOf(id));
         return optionalEmployee.orElse(null);
     }

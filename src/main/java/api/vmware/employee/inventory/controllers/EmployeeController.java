@@ -57,36 +57,37 @@ public class EmployeeController {
 
     @PostMapping
     @ApiOperation("Creates an Employee record and returns unique employeeId")
-    public ResponseEntity<EmployeeDTO> create(@RequestBody @Valid final EmployeeRequestModel employee)
+    public ResponseEntity<EmployeeDTO> createEmployee(@RequestBody @Valid final EmployeeRequestModel employee)
             throws EmployeeInventoryException {
         final ModelMapper modelMapper = new ModelMapper();
         modelMapper.getConfiguration().setMatchingStrategy(MatchingStrategies.STRICT);
         final EmployeeDTO employeeDTO = modelMapper.map(employee, EmployeeDTO.class);
-        return new ResponseEntity<>(employeeService.create(employeeDTO), HttpStatus.CREATED);
+        return new ResponseEntity<>(employeeService.createEmployee(employeeDTO), HttpStatus.CREATED);
     }
 
     @PutMapping("/{employeeId}")
     @ApiOperation("Updates an Employee record for the given employeeId")
-    public ResponseEntity<EmployeeDTO> update(@RequestBody @Valid final EmployeeRequestModel employee,
+    public ResponseEntity<String> updateEmployee(@RequestBody @Valid final EmployeeRequestModel employee,
                                               @PathVariable final Integer employeeId) throws EmployeeInventoryException {
         final ModelMapper modelMapper = new ModelMapper();
         modelMapper.getConfiguration().setMatchingStrategy(MatchingStrategies.STRICT);
         final EmployeeDTO employeeDTO = modelMapper.map(employee, EmployeeDTO.class);
-        return new ResponseEntity<>(employeeService.update(employeeDTO, employeeId), HttpStatus.OK);
+        employeeService.updateEmployee(employeeDTO, employeeId);
+        return new ResponseEntity<>("Updated Successfully", HttpStatus.OK);
     }
 
     @DeleteMapping("/{employeeId}")
     @ApiOperation("Deletes an Employee record for the given employeeId")
-    public void delete(@PathVariable final Integer employeeId) throws EmployeeInventoryException {
-        employeeService.delete(employeeId);
+    public void deleteEmployee(@PathVariable final Integer employeeId) throws EmployeeInventoryException {
+        employeeService.deleteEmployee(employeeId);
     }
 
     @GetMapping("/{employeeId}")
     @ApiOperation("Finds an Employee record for the given employeeId")
-    public ResponseEntity<EmployeeDTO> find(@PathVariable final Integer employeeId) {
-        final EmployeeDTO employee = employeeService.find(employeeId);
+    public ResponseEntity<EmployeeDTO> findEmployeeById(@PathVariable final Integer employeeId) {
+        final EmployeeDTO employee = employeeService.findEmployeeById(employeeId);
         if (employee == null) {
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+            return new ResponseEntity<>(new EmployeeDTO(), HttpStatus.BAD_REQUEST);
         }
         return new ResponseEntity<>(employee, HttpStatus.OK);
     }
