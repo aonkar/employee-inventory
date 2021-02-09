@@ -1,0 +1,13 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name:  employee-inventory-service
+spec:
+  selector:
+    app: employee-inventory
+  type:  NodePort
+  ports:
+    - protocol: TCP
+      nodePort: 30000
+      port:  80
+      targetPort:  8080

@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: employee-inventory-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: employee-inventory
+  template:
+    metadata:
+      labels:
+        app: employee-inventory
+    spec:
+      containers:
+      - name: employee-inventory
+        imagePullPolicy: IfNotPresent
+        image: aonkar/employee-inventory
+        ports:
+        - containerPort: 8080
