@@ -43,7 +43,7 @@ public class EmployeeController {
     }
 
     @PostMapping("/upload")
-    @ApiOperation("Bulk insertion of employee records. Upload a file with multiple employees line separated")
+    @ApiOperation("Bulk insertion of employee records. Upload a file with multiple employees line separated. Max size of 15mb")
     public ResponseEntity<EmployeeInventoryResponse> uploadEmployeeInventory(@RequestParam("file") final MultipartFile file)
             throws EmployeeInventoryException {
 
