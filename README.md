@@ -27,8 +27,8 @@ You can access the application on `http://localhost:8080/swagger-ui.html`
 
 ## Running using Kubernetes
 1. Docker Image is pushed to https://hub.docker.com/repository/docker/aonkar/employee-inventory
-2. deployment-definition.yaml is in the root folder of the project for Deployment of the pod in kubernetes cluster
-3. service-definition.yaml is in the root folder of the project for making the service available to the external world
+2. `deployment-definition.yaml` is in the root folder of the project for Deployment of the pod in kubernetes cluster
+3. `service-definition.yaml` is in the root folder of the project for making the service available to the external world
 
 ## API Documentation
 ###### Swagger `http://localhost:8080/swagger-ui.html`
