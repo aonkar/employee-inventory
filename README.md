@@ -7,6 +7,11 @@ For building and running the application you need:
 - [JDK 11]
 - [Maven 3.6]
 
+## Centralised Logging and Exception Handling
+
+Package `api.vmware.employee.inventory.aop`
+
+
 ## Compile and package
 
 ```shell
